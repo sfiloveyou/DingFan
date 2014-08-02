@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.dingfan.model.Orders" table="Orders">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="personName" type="java.lang.String">
+            <column name="personName" length="50" not-null="true">
+            	<comment>订饭人</comment>
+            </column> 
+        </property>
+        <property name="amount" type="java.lang.String">
+            <column name="amount" length="10" not-null="true">
+            	<comment>订饭数量</comment>
+            </column> 
+        </property>
+        <property name="paid" type="java.lang.Integer">
+            <column name="paid" length="1" >
+            	<comment>已经付账</comment>
+            </column> 
+        </property>
+        <property name="entertime" type="java.util.Date">
+            <column name="entertime">
+                <comment>填写时间</comment>
+             </column>   
+        </property>
+        <property name="lastIp" type="java.lang.String">
+            <column name="last_ip">
+                <comment>最后IP</comment>
+             </column>   
+        </property>
+        <property name="comments" type="java.lang.String">
+            <column name="comments">
+                <comment>备注</comment>
+             </column>   
+        </property>
+        <property name="status" type="java.lang.Integer">
+            <column name="status">
+                <comment>状态</comment>
+             </column>   
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts-config PUBLIC
+  "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+  "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+
+<struts-config>
+
+	<form-beans>
+	    <form-bean name="loginForm"
+	       type="org.apache.struts.validator.DynaValidatorForm">
+	      <form-property name="userName" type="java.lang.String" />
+	      <form-property name="password" type="java.lang.String" />
+	    </form-bean>
+	</form-beans>
+
+	<global-exceptions>
+		<exception key="" type="java.lang.Exception" scope="request" path="/common/error.jsp"/>
+	</global-exceptions>
+	
+    <action-mappings>
+		<action path="/loginAction"
+				type="com.dingfan.action.LoginAction"
+				parameter="method"
+				name="loginForm"
+				scope="request" validate="false">
+			<forward name="login" path="/login.jsp" />
+			<forward name="logout" path="/logout.jsp" />
+			<forward name="success" path="/admin.jsp" />
+		</action>
+		
+		<action path="/systemAction"
+				type="com.dingfan.action.SystemAction"
+				parameter="method"
+				scope="request" validate="false">
+		</action>
+		<action path="/dingfanAction"
+				type="com.dingfan.action.DingFanAction"
+				parameter="method"
+				scope="request" validate="false">
+				<forward name="index" path="/index.jsp" />
+				<forward name="admin" path="/admin.jsp" />
+		</action>			
+    </action-mappings>
+<message-resources parameter="ApplicationResources"/>   
+</struts-config>
+

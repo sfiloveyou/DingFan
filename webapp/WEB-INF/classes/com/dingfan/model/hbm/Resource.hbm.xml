@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.dingfan.model.Resource" table="sys_resource">
+        <cache usage="nonstrict-read-write"/>
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+		<property name="name" column="name" />
+		<property name="resType" column="resType" not-null="true"/>
+		<property name="resString" column="resString" not-null="true"/>
+		<property name="descn" column="descn"/>
+        <set name="roleSet" lazy="true" inverse="true" table="sys_role_resource" >
+        <cache usage="nonstrict-read-write"/>
+            <comment>角色</comment>
+            <key column="resource_id"></key>
+            <many-to-many column="role_id" class="com.dingfan.model.Role" />
+        </set>
+    </class>
+</hibernate-mapping>
